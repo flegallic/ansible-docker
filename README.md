@@ -1,7 +1,6 @@
 # Ansible docker
 Ansible deployment example. This playbook contains docker actions \
-Deployment on 3 servers \
-Install basic packages, docker & docker-compose
+Install basic packages, docker & docker-compose. Deployment on servers.
 
 # Install requierements
 https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html
