@@ -1,0 +1,54 @@
+---
+# This playbook contains docker actions that will be run on "remote" host.
+
+# Install docker requierements
+- name: Install docker packages
+  apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
+  with_items:
+    - apt-transport-https
+    - ca-certificates
+    - curl
+    - software-properties-common
+  tags:
+    - docker
+
+# Add Docker s official GPG key
+- name: Add Docker s official GPG key
+  apt_key:
+    url: https://download.docker.com/linux/debian/gpg
+    state: present
+    validate_certs: yes
+  tags:
+    - docker
+
+# fingerprint 0EBFCD88
+- name: Verify key with the fingerprint
+  apt_key:
+    id: 0EBFCD88
+    state: present
+  tags:
+    - docker
+
+# Add repository
+- name: Add repository
+  shell: add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
+
+# Install Docker
+- name: Install Docker
+  apt: name=docker-ce update_cache=yes state=latest
+
+# Install Docker compose
+- name: Install docker-compose
+  apt:
+    name: docker-compose
+    state: present
+    update_cache: yes
+  tags:
+    - docker
+
+
+
+...

@@ -1,0 +1,22 @@
+---
+- name: Install list of packages
+  apt:
+    name: "{{ packages }}"
+    state: present
+    update_cache: yes
+  vars:
+    packages:
+    - dnsutils
+    - bind9utils
+    - python3
+    - python3-pip
+    - python3-netaddr
+    - libapache2-mod-wsgi-py3
+    - libapache2-mod-shib2
+    - lynx
+    - git
+    - vim
+    - sqlite3
+    - apache2
+
+...

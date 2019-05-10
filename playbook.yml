@@ -1,0 +1,15 @@
+---
+- name: Install config servers
+  hosts: docker
+  remote_user: root
+  become: yes
+
+  roles:
+    - packages
+    - docker
+
+  environment:
+    http_proxy: http://your_proxy:3128/
+    https_proxy: http://your_proxy:3128/
+
+...
